@@ -46,7 +46,25 @@ try {
     echo "Matching servers: " . count($serversToPatch) . PHP_EOL;
 
     foreach ($serversToPatch as $server) {
+        echo PHP_EOL;
+        echo "-------- " . $server . " --------" . PHP_EOL;
+        $routedNets = $ovh->get("/ip?routedTo.serviceName=" . $server . "&version=4");
 
+        foreach ($routedNets as $net) {
+            echo "Processing net " . $net . PHP_EOL;
+            $ips = $ovh->get("/ip/" . urlencode($net) . "/game");
+
+            foreach ($ips as $ip) {
+                echo "Processing IP " . $ip . " in net " . $net . "... ";
+                $ovh->put("/ip/" . urlencode($net) . "/game/" . urlencode($ip), array(
+                    "firewallModeEnabled" => false
+                ));
+                echo " done!" . PHP_EOL;
+            }
+        }
+
+
+        echo "---------------------------------------------" . PHP_EOL;
     }
 } catch (JsonException $e) {
     echo $e->getMessage();
