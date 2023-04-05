@@ -6,6 +6,7 @@
 - [**Why?**](#why)
 - [**Requirements**](#requirements)
 - [**Installation**](#installation)
+- [**Executing**](#executing)
 
 ## Why?
 
