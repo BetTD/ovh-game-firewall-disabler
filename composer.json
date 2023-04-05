@@ -1,0 +1,18 @@
+{
+    "name": "raulm/patch-ovh-game-ddos",
+    "type": "project",
+    "require": {
+        "ovh/ovh": "^3.1"
+    },
+    "autoload": {
+        "psr-4": {
+            "Raulm\\PatchOvhGameDdos\\": "src/"
+        }
+    },
+    "authors": [
+        {
+            "name": "Raúl M.",
+            "email": "raul.m@sparkedhost.com"
+        }
+    ]
+}
